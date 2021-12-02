@@ -20,4 +20,4 @@ module Day1 =
         let part2 = countOfIncreasedSlidingDepths depths
 
         sprintf $"Part 1 %i{part1}{Environment.NewLine}"
-        + $"Part 2 %i{part2}"
+              + $"Part 2 %i{part2}"
