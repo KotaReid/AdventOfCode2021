@@ -5,6 +5,7 @@ let executeDay n =
     match n with
     | "1" -> FileUtils.readLinesAsNumber "Day1" |> Day1.result
     | "2" -> FileUtils.readLines "Day2" |> Day2.result
+    | "3" -> FileUtils.readLines "Day3" |> Day3.result
     | _ -> "Invalid Option"
 
 let rec promptUser () =

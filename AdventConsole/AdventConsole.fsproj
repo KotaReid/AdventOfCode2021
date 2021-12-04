@@ -5,7 +5,9 @@
   </PropertyGroup>
 	
   <ItemGroup>
-	<Content Include="Inputs\*" />
+	<Content Include="Inputs\Day1.txt" />
+	<Content Include="Inputs\Day2.txt" />
+	<Content Include="Inputs\Day3.txt" />
   </ItemGroup>
 
   <ItemGroup>
