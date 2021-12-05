@@ -1,8 +1,8 @@
 namespace AdventTests
 
 open NUnit.Framework
-open AdventLib
-open Day3
+open TestUtils
+open AdventLib.Day3
 
 [<TestFixture>]
 type Day3Tests() = 
@@ -21,6 +21,10 @@ type Day3Tests() =
             "00010"
             "01010"
         ]
+
+    let fileDiagnostics = FileUtils.readLines "Day3"
+    
+    let data = dataFromSource diagonstics fileDiagnostics
 
     [<Test>]
     member this.ShouldCalculateGammaRate() =
@@ -45,3 +49,13 @@ type Day3Tests() =
         let expected = 10;
         let actual = co2ScurbbingRating diagonstics
         Assert.That(actual, Is.EqualTo(expected))
+
+    [<TestCase(DataSource.Example, ExpectedResult = 198)>]
+    [<TestCase(DataSource.File, ExpectedResult = 4160394)>]
+    member this.ShouldSolvePart1(dataSource) =
+        data dataSource |> powerConsumption
+
+    [<TestCase(DataSource.Example, ExpectedResult = 230)>]
+    [<TestCase(DataSource.File, ExpectedResult = 4125600)>]
+    member this.ShouldSolvePart2(dataSource) =
+        data dataSource |> lifeSupportRating

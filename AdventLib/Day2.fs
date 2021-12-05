@@ -1,11 +1,11 @@
 ﻿namespace AdventLib
 
-open System
-
 module Day2 =
     type Sub = 
         { Horizontal:int; Depth:int; Aim:int; }
         static member Zero = { Horizontal=0; Depth=0; Aim=0; }
+
+    let subTotal sub = sub.Horizontal * sub.Depth
 
     let private mv forwardF verticalF sub (command, size) =
             match command with
@@ -30,22 +30,5 @@ module Day2 =
 
         mv forwardcommand verticalCommand
 
-    let moveCourseWithPosition = Seq.fold moveWithPosition
-    let moveCourseWithAim = Seq.fold moveWithAim
-
-    let result (unparsedCommands: seq<string>) =
-        let commands = 
-            unparsedCommands
-            |> Seq.map (fun s -> 
-                s.Split " " 
-                |> Seq.pairwise
-                |> Seq.head
-                |> (fun (a,b) -> (a,int b)))
-
-        let totalSubPos subPosition = subPosition.Horizontal * subPosition.Depth;
-        
-        let part1 = moveCourseWithPosition Sub.Zero commands |> totalSubPos
-        let part2 = moveCourseWithAim Sub.Zero commands |> totalSubPos
-
-        sprintf $"Part 1 %i{part1}{Environment.NewLine}"
-              + $"Part 2 %i{part2}"
+    let totalCoursePosition sub commands = Seq.fold moveWithPosition sub commands |> subTotal
+    let totalCourseAim sub commands = Seq.fold moveWithAim sub commands |> subTotal

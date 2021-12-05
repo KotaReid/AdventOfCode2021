@@ -1,9 +1,9 @@
 namespace AdventTests
 
 open NUnit.Framework
-open AdventLib
+open AdventLib.Day2
+open TestUtils
 open System
-open Day2
 
 [<TestFixture>]
 type Day2Tests() =
@@ -16,6 +16,16 @@ type Day2Tests() =
             ("down", 8)
             ("forward", 2)
         ]
+
+    let fileCommands = 
+        FileUtils.readLines "Day2"
+        |> List.map (fun s -> 
+            s.Split " " 
+            |> Seq.pairwise
+            |> Seq.head
+            |> (fun (a,b) -> (a,int b)))
+
+    let data = dataFromSource commands fileCommands
 
     let assertInvalidCommand f =
         let command = ("badCommand", 0)
@@ -67,19 +77,12 @@ type Day2Tests() =
 
         Assert.That(actual, Is.EqualTo(expected))
 
-    [<Test>]
-    member this.ShouldMoveWithSequenceOfCommands() =
-        let expected : Sub = {Horizontal = 15; Depth = 10; Aim = 0}
+    [<TestCase(DataSource.Example, ExpectedResult = 150)>]
+    [<TestCase(DataSource.File, ExpectedResult = 1989014)>]
+    member this.ShouldMovePosWithSequenceOfCommands(dataSource) =
+         data dataSource |> totalCoursePosition Sub.Zero
 
-        let actual = moveCourseWithPosition Sub.Zero commands
-
-        Assert.That(actual, Is.EqualTo(expected))
-
-    [<Test>]
-    member this.ShouldMoveWithAimWithSequenceOfCommands() =
-        let expected : Sub = {Horizontal = 15; Depth = 60; Aim = 10}
-
-        let actual = moveCourseWithAim Sub.Zero commands
-
-        Assert.That(actual, Is.EqualTo(expected))
-
+    [<TestCase(DataSource.Example, ExpectedResult = 900)>]
+    [<TestCase(DataSource.File, ExpectedResult = 2006917119)>]
+    member this.ShouldMoveAimWithSequenceOfCommands(dataSource) =
+        data dataSource |> totalCourseAim Sub.Zero 

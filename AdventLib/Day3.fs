@@ -40,12 +40,5 @@ module Day3 =
     let oxygenGeneratorRating = ratingBy 1 '1'
     let co2ScurbbingRating = ratingBy 0 '0'
 
-    let result (diagnostics: list<string>) = 
-        let powerConsumption = gammaRate diagnostics * eplisonRate diagnostics
-        let lifeSupportRating = oxygenGeneratorRating diagnostics * co2ScurbbingRating diagnostics
-
-        let part1 = powerConsumption
-        let part2 = lifeSupportRating
-
-        sprintf $"Part 1 %i{part1}{Environment.NewLine}"
-              + $"Part 2 %i{part2}"
+    let powerConsumption diagnostics = gammaRate diagnostics * eplisonRate diagnostics
+    let lifeSupportRating diagnostics= oxygenGeneratorRating diagnostics * co2ScurbbingRating diagnostics

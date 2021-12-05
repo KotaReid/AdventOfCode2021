@@ -1,7 +1,8 @@
 namespace AdventTests
 
 open NUnit.Framework
-open AdventLib
+open AdventLib.Day1
+open TestUtils
 
 [<TestFixture>]
 type Day1Tests() =
@@ -17,17 +18,16 @@ type Day1Tests() =
           260
           263 ]
 
-    [<Test>]
-    member this.shouldCountIncreasedDepths() =
-        let expected = 7
-        let actual = Day1.countOfIncreasedDepths depths
-        Assert.That(actual, Is.EqualTo(expected))
+    let fileDepths = FileUtils.readLinesAsNumber "Day1"
 
-    [<Test>]
-    member this.shouldCountIncreasedSlidingDepths() =
-        let expected = 5
+    let data = dataFromSource depths fileDepths
 
-        let actual =
-            Day1.countOfIncreasedSlidingDepths depths
+    [<TestCase(DataSource.Example, ExpectedResult = 7)>]
+    [<TestCase(DataSource.File, ExpectedResult = 1446)>]
+    member this.shouldCountIncreasedDepths(dataSource) =
+        data dataSource |> countOfIncreasedDepths
 
-        Assert.That(actual, Is.EqualTo(expected))
+    [<TestCase(DataSource.Example, ExpectedResult = 5)>]
+    [<TestCase(DataSource.File, ExpectedResult = 1486)>]
+    member this.shouldCountIncreasedSlidingDepths(dataSource) =
+        data dataSource |> countOfIncreasedSlidingDepths
