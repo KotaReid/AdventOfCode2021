@@ -17,12 +17,21 @@
     <Content Include="Inputs\Day3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Inputs\Day4Example.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Inputs\Day4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="TestUtils.fs" />
     <Compile Include="FileUtils.fs" />
     <Compile Include="Day1Tests.fs" />
 	<Compile Include="Day2Tests.fs" />
 	<Compile Include="Day3Tests.fs" />
+	<Compile Include="Day4Tests.fs" />
   </ItemGroup>
+
+  <ItemGroup />
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />

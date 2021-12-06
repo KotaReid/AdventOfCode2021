@@ -51,11 +51,11 @@ type Day3Tests() =
         Assert.That(actual, Is.EqualTo(expected))
 
     [<TestCase(DataSource.Example, ExpectedResult = 198)>]
-    [<TestCase(DataSource.File, ExpectedResult = 4160394)>]
+    [<TestCase(DataSource.Problem, ExpectedResult = 4160394)>]
     member this.ShouldSolvePart1(dataSource) =
         data dataSource |> powerConsumption
 
     [<TestCase(DataSource.Example, ExpectedResult = 230)>]
-    [<TestCase(DataSource.File, ExpectedResult = 4125600)>]
+    [<TestCase(DataSource.Problem, ExpectedResult = 4125600)>]
     member this.ShouldSolvePart2(dataSource) =
         data dataSource |> lifeSupportRating

@@ -78,11 +78,11 @@ type Day2Tests() =
         Assert.That(actual, Is.EqualTo(expected))
 
     [<TestCase(DataSource.Example, ExpectedResult = 150)>]
-    [<TestCase(DataSource.File, ExpectedResult = 1989014)>]
+    [<TestCase(DataSource.Problem, ExpectedResult = 1989014)>]
     member this.ShouldMovePosWithSequenceOfCommands(dataSource) =
          data dataSource |> totalCoursePosition Sub.Zero
 
     [<TestCase(DataSource.Example, ExpectedResult = 900)>]
-    [<TestCase(DataSource.File, ExpectedResult = 2006917119)>]
+    [<TestCase(DataSource.Problem, ExpectedResult = 2006917119)>]
     member this.ShouldMoveAimWithSequenceOfCommands(dataSource) =
         data dataSource |> totalCourseAim Sub.Zero 

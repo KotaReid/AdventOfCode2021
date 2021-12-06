@@ -23,11 +23,11 @@ type Day1Tests() =
     let data = dataFromSource depths fileDepths
 
     [<TestCase(DataSource.Example, ExpectedResult = 7)>]
-    [<TestCase(DataSource.File, ExpectedResult = 1446)>]
+    [<TestCase(DataSource.Problem, ExpectedResult = 1446)>]
     member this.shouldCountIncreasedDepths(dataSource) =
         data dataSource |> countOfIncreasedDepths
 
     [<TestCase(DataSource.Example, ExpectedResult = 5)>]
-    [<TestCase(DataSource.File, ExpectedResult = 1486)>]
+    [<TestCase(DataSource.Problem, ExpectedResult = 1486)>]
     member this.shouldCountIncreasedSlidingDepths(dataSource) =
         data dataSource |> countOfIncreasedSlidingDepths
