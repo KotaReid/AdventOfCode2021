@@ -6,8 +6,8 @@ open AdventLib.Day5
 
 [<TestFixture>]
 type Day5Tests() = 
-    let exampleGame = FileUtils.readLines "Day5Example"
-    let problemGame = FileUtils.readLines "Day5"
+    let exampleGame = FileUtils.readStrings "Day5Example"
+    let problemGame = FileUtils.readStrings "Day5"
 
     let data = dataFromSource exampleGame problemGame
 

@@ -22,7 +22,7 @@ type Day3Tests() =
             "01010"
         ]
 
-    let fileDiagnostics = FileUtils.readLines "Day3"
+    let fileDiagnostics = FileUtils.readStrings "Day3"
     
     let data = dataFromSource diagonstics fileDiagnostics
 

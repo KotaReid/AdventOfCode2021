@@ -18,7 +18,7 @@ type Day2Tests() =
         ]
 
     let fileCommands = 
-        FileUtils.readLines "Day2"
+        FileUtils.readStrings "Day2"
         |> List.map (fun s -> 
             s.Split " " 
             |> Seq.pairwise
